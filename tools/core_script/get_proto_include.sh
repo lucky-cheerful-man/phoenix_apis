@@ -7,10 +7,11 @@ echo "Get proto includes to ${proto_include_dir}"
 rm -rf "${proto_include_dir}"   # 清空依赖目录
 mkdir -p "${proto_include_dir}" # 新建依赖目录
 
-# 过滤出 pb 定义的 module (名称中带有 "git.garena.com/shopee" 且带有 "protobuf" 的模块)
+# 过滤出 pb 定义的 module
 filter_protobuf_module() {
   current_project_module=$(go list -m)
-  awk '$1 ~ /git\.garena\.com\/shopee/{print}' | awk '$1 ~ /protobuf/{print}' | grep -v "${current_project_module}"
+  awk '$1 ~ /github\.com\/lucky-cheerful-man/{print}' | awk '$1 ~ /protobuf/{print}' | grep -v
+  "${current_project_module}"
 }
 
 # mkdir to hold dependencies
