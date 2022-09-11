@@ -1,4 +1,4 @@
-module github.com/lucky-cheerful-man/phoenix_api;
+module github.com/lucky-cheerful-man/phoenix_api
 
 go 1.16
 
