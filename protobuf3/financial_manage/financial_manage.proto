@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+package financial.manage;
+option go_package = "github.com/lucky-cheerful-man/phoenix_apis/protobuf.pb/financial_manage";
+
+service FinancialService {
+  rpc GetAssetClass(GetAssetClassRequest) returns (GetAssetClassResponse) {}
+  rpc AddAssetClass(AddAssetClassRequest) returns (AddAssetClassResponse) {}
+  rpc ModifyAssetClass(ModifyAssetClassRequest) returns (ModifyAssetClassResponse) {}
+  rpc DeleteAssetClass(DeleteAssetClassRequest) returns (DeleteAssetClassResponse) {}
+  rpc GetAssetObject(GetAssetObjectRequest) returns (GetAssetObjectResponse) {}
+  rpc AddAssetObject(AddAssetObjectRequest) returns (AddAssetObjectResponse) {}
+  rpc ModifyAssetObject(ModifyAssetObjectRequest) returns (ModifyAssetObjectResponse) {}
+  rpc DeleteAssetObject(DeleteAssetObjectRequest) returns (DeleteAssetObjectResponse) {}
+  rpc GetIncomeExpenditureClass(GetIncomeExpenditureClassRequest) returns (GetIncomeExpenditureClassResponse) {}
+  rpc AddIncomeExpenditureClass(AddIncomeExpenditureClassRequest) returns (AddIncomeExpenditureClassResponse) {}
+  rpc ModifyIncomeExpenditureClass(ModifyIncomeExpenditureClassRequest) returns (ModifyIncomeExpenditureClassResponse) {}
+  rpc DeleteIncomeExpenditureClass(DeleteIncomeExpenditureClassRequest) returns (DeleteIncomeExpenditureClassResponse) {}
+  rpc GetIncomeExpenditureFlow(GetIncomeExpenditureFlowRequest) returns (GetIncomeExpenditureFlowResponse) {}
+  rpc AddIncomeExpenditureFlow(AddIncomeExpenditureFlowRequest) returns (AddIncomeExpenditureFlowResponse) {}
+  rpc ModifyIncomeExpenditureFlow(ModifyIncomeExpenditureFlowRequest) returns (ModifyIncomeExpenditureFlowResponse) {}
+  rpc DeleteIncomeExpenditureFlow(DeleteIncomeExpenditureFlowRequest) returns (DeleteIncomeExpenditureFlowResponse) {}
+  rpc GetTotalAsset(GetTotalAssetRequest) returns (GetTotalAssetResponse) {}
+}
+
+message GetAssetClassRequest {
+}
+message GetAssetClassResponse {
+  repeated AssetClassDetail results = 1;
+}
+message AssetClassDetail {
+  int64 id = 1;
+  string name = 2;
+}
+
+message AddAssetClassRequest {
+  string name = 1;
+}
+message AddAssetClassResponse {
+  int64 id = 1;
+}
+
+message ModifyAssetClassRequest {
+  int64 id = 1;
+  string name = 2;
+}
+message ModifyAssetClassResponse {
+}
+
+message DeleteAssetClassRequest {
+  int64 id = 1;
+}
+message DeleteAssetClassResponse {
+}
+
+message GetAssetObjectRequest {
+  int64 user_id = 1;
+}
+message GetAssetObjectResponse {
+  repeated AssetObjectDetail results= 1;
+}
+message AssetObjectDetail {
+  int64 id = 1;
+  string name = 2;
+  string card_number = 3;
+  string owner = 4;
+  int64 balance = 5;
+  int32 asset_class_id = 6;
+  int64 user_id = 7;
+}
+
+message AddAssetObjectRequest {
+  int64 user_id = 1;
+  string name = 2;
+  string card_number = 3;
+  string owner = 4;
+  int64 balance = 5;
+  int32 asset_class_id = 6;
+}
+message AddAssetObjectResponse {
+  int64 id = 1;
+}
+
+message ModifyAssetObjectRequest {
+  int64 id = 1;
+  string name = 2;
+  string card_number = 3;
+  string owner = 4;
+  int64 balance = 5;
+  int32 asset_class_id = 6;
+}
+message ModifyAssetObjectResponse {
+}
+
+message DeleteAssetObjectRequest {
+  int64 id = 1;
+}
+message DeleteAssetObjectResponse {
+}
+
+message GetIncomeExpenditureClassRequest {
+  int64 user_id = 1;
+}
+message GetIncomeExpenditureClassResponse {
+  repeated IncomeExpenditureClassDetail results = 1;
+}
+message IncomeExpenditureClassDetail {
+  int64 id = 1;
+  int64 user_id = 2;
+  int32 type = 3;
+  string name = 4;
+}
+
+message AddIncomeExpenditureClassRequest {
+  int64 user_id = 1;
+  int32 type = 2;
+  string name = 3;
+}
+message AddIncomeExpenditureClassResponse {
+  int64 id = 1;
+}
+
+message ModifyIncomeExpenditureClassRequest {
+  int64 id = 1;
+  int32 type = 2;
+  string name = 3;
+}
+message ModifyIncomeExpenditureClassResponse {
+}
+
+message DeleteIncomeExpenditureClassRequest {
+  int64 id = 1;
+}
+message DeleteIncomeExpenditureClassResponse {
+}
+
+message GetIncomeExpenditureFlowRequest {
+  int64 user_id = 1;
+  PageInfo page = 2;
+}
+message GetIncomeExpenditureFlowResponse {
+  repeated IncomeExpenditureFlowDetail results = 1;
+}
+
+message PageInfo {
+  int32 page_no = 1;
+  int32 page_size = 2;
+}
+
+message IncomeExpenditureFlowDetail {
+  int64 id = 1;
+  string flow_name = 2;
+  int64 asset_object_id = 3;
+  string owner = 4;
+  int64 amount = 5;
+  int64 ie_class_id = 6;
+  int64 user_id = 7;
+}
+
+message AddIncomeExpenditureFlowRequest {
+  int64 user_id = 1;
+  string flow_name = 2;
+  int64 asset_object_id = 3;
+  string owner = 4;
+  int64 amount = 5;
+  int64 ie_class_id = 6;
+}
+message AddIncomeExpenditureFlowResponse {
+  int64 id = 1;
+}
+
+message ModifyIncomeExpenditureFlowRequest {
+  int64 id = 1;
+  string flow_name = 2;
+  int64 asset_object_id = 3;
+  string owner = 4;
+  int64 amount = 5;
+  int64 ie_class_id = 6;
+}
+message ModifyIncomeExpenditureFlowResponse {
+}
+
+message DeleteIncomeExpenditureFlowRequest {
+  int64 id = 1;
+}
+message DeleteIncomeExpenditureFlowResponse {
+}
+
+message GetTotalAssetRequest {
+  int64 user_id = 1;
+}
+message GetTotalAssetResponse {
+  int64 total = 1;
+}
