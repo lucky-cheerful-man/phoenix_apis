@@ -17,7 +17,6 @@ message RegisterRequest {
   string password = 3;
 }
 message RegisterResponse {
-  string msg = 1;
 }
 
 message AuthRequest {
@@ -26,8 +25,9 @@ message AuthRequest {
   string password = 3;
 }
 message AuthResponse {
-  string nickname = 1;
-  string image = 2;
+  int64  user_id = 1;
+  string nickname = 2;
+  string image = 3;
 }
 
 message GetProfileRequest {
@@ -54,5 +54,4 @@ message EditProfileRequest {
   bytes  image = 4;
 }
 message EditProfileResponse {
-  string msg = 1;
 }
